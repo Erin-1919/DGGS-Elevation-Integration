@@ -1,3 +1,7 @@
+##################################################
+### Generate centroids within area of interest ###
+##################################################
+
 library(dggridR)
 library(rgdal)
 library(rgeos)
