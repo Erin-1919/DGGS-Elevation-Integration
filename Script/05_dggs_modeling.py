@@ -19,7 +19,7 @@ fid = int(os.environ.get("SLURM_ARRAY_TASK_ID"))
 
 ## construct a look-up table, storing resolution and corresponding cell size and vertical resolution
 res_list = [16,17,18,19,20,21,22,23,24,25,26,27,28,29]
-cell_size_list = [0.005,0.005,0.003,0.001,0.001,0.0006,0.0003,0.0002,0.0001,0.00007,0.00003,0.00002,0.00001,0.000005]
+cell_size_list = [0.005,0.003,0.001,0.0009,0.0008,0.0006,0.0003,0.0002,0.0001,0.00006,0.00003,0.00002,0.00001,0.000005]
 vertical_res_list = [0,0,0,1,1,2,2,3,3,4,4,5,5,6]
 # convert to a pandas dataframe with resolution levels as index
 look_up = pandas.DataFrame({'res': res_list, 'cell_size': cell_size_list, 'verti_res': vertical_res_list}, index = res_list)
