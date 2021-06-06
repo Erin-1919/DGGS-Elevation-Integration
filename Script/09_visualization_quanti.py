@@ -2,6 +2,8 @@ import datashader as ds, matplotlib.pyplot as plt, pandas as pd
 import sys, numpy, gc, matplotlib
 from datashader.mpl_ext import dsshow
 
+# Run this on a HPC so set the backend as 'AGG'
+# AGG backend is for writing to file instead of rendering in a window
 matplotlib.use('AGG')
 dggs_res = int((sys.argv[1]))
 grid_num = int((sys.argv[2]))
@@ -29,5 +31,4 @@ for fid in range(1,grid_num+1):
     plt.savefig('Result/Level{}/Img/vege_img_{}.png'.format(dggs_res,fid), bbox_inches='tight', pad_inches=0.0)
     plt.close()
     gc.collect()
-    
     
