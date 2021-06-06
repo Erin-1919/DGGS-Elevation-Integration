@@ -3,6 +3,8 @@
 ###################################################
 
 ### mosaic CDEMs
+# if download CDEM manually using the Geospatial-Data Extraction tool 
+# this step can be skipped
 import gc, glob, rasterio, os
 from rasterio.merge import merge
 
@@ -14,6 +16,7 @@ for fp in dem_fps:
     src = rasterio.open(fp)
     src_files_to_mosaic.append(src)
 
+# if there is only one CDEM tile then skip the mosaic process and rename the tile
 if len(src_files_to_mosaic) == 1:
     src.close()
     os.rename('Data/CDEM_1.tif', 'Data/CDEM_mosaic.tif')
@@ -35,17 +38,18 @@ else:
 print ("Mosaic CDEMs successfully!")
 
 ### inversely project CDEM to geographic CRS
+# if download CDEM manually using the Geospatial-Data Extraction tool 
+# this step can be skipped
 import rasterio, gdal
 
+# convert to NAD83 CSRS 
 cdem_mosaic = rasterio.open('Data/CDEM_mosaic.tif')
-
 wrap_option = gdal.WarpOptions(format = cdem_mosaic.meta.get('driver'), 
                    outputType = gdal.GDT_Float32,
                    srcSRS = cdem_mosaic.meta.get('crs'),
                    dstSRS = 'EPSG:4617', # NAD83(CSRS)
                    dstNodata = cdem_mosaic.meta.get('nodata'),
                    creationOptions = ['COMPRESS=LZW'])
-
 gdal.Warp('Data/CDEM_mosaic_4617.tif', 'Data/CDEM_mosaic.tif', options = wrap_option)
 
 print ("Inversely project CDEM successfully!")
@@ -85,7 +89,6 @@ with rasterio.open('Data/CDEM_mosaic_temp.tif', "w", **cdem_out_meta) as dest:
 del cdem_out_img, cdem_out_transform
 gc.collect()
 
-
 def reproject_image_to_master(master,slave):
     """A function to reproject a raster (slave) to
     match the extent, resolution and projection of another
@@ -113,7 +116,7 @@ reproject_image_to_master('Data/CDEM_mosaic_temp.tif', 'Data/HT2_2010v70_CGG2013
 
 print ("Unify CDEM and BYN rasters successfully!")
 
-### convert to CGVD2013 
+### convert the vertical datum to CGVD2013 
 import numpy
 import rasterio
 from matplotlib import pyplot
@@ -122,8 +125,8 @@ from matplotlib import pyplot
 clipped_cdem = rasterio.open('Data/CDEM_mosaic_temp.tif')
 clipped_byn = rasterio.open('Data/HT2_2010v70_CGG2013a_temp.tif')
 
-clipped_cdem.meta
-clipped_byn.meta
+#clipped_cdem.meta
+#clipped_byn.meta
 
 # do map algebra (band calculation)
 delta_dem = clipped_byn.read(1)
@@ -140,9 +143,8 @@ with rasterio.open('Data/CDEM_cgvd2013.tif', "w", **cgvd2013_meta) as dest:
     dest.write(cgvd2013.astype(rasterio.float32), 1)
 
 # plot the cdem with CGVD2013
-src = rasterio.open("Data/CDEM_cgvd2013.tif")
-pyplot.imshow(src.read(1), cmap='gray')
-pyplot.show()
+#src = rasterio.open("Data/CDEM_cgvd2013.tif")
+#pyplot.imshow(src.read(1), cmap='gray')
+#pyplot.show()
 
 print ("Convert to CGVD2013 successfully!")
-
