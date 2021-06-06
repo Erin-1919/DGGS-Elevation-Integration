@@ -1,5 +1,5 @@
 ###############################################
-#### Visualization of Quantization results ####
+#### Visualization of Quantization Results ####
 ###############################################
 
 import datashader as ds, matplotlib.pyplot as plt, pandas as pd
