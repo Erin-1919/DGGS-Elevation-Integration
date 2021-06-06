@@ -115,7 +115,7 @@ def dggs_elevation_hrdem(x,y,interp = 'linear'):
         pass
     
 def dggs_elevation_df(dataframe):
-    ''' a function on the dataframe '''
+    ''' a function on the dataframe so that it can be called on splitted data chunks'''
     dataframe['model_cdem'] = [dggs_elevation_cdem(lon,lat) for lon, lat in zip(dataframe.lon_c, dataframe.lat_c)]
     dataframe['model_hrdem'] = [dggs_elevation_hrdem(lon,lat) for lon, lat in zip(dataframe.lon_c, dataframe.lat_c)]
     return dataframe
