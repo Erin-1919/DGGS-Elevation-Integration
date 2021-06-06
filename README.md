@@ -15,7 +15,7 @@ Mingke Li (mingke.li@ucalgary.ca)
 ### DOI
 TODO
 
-### Code Repositories
+### Code Repository
 https://github.com/Erin-1919/DGGS-Elevation-Integration
 
 This work aimed to integrate multi-source terrain data in Canada by adopting the ISEA3H DGGS. The modeling process of terrain data in the ISEA3H DGGS had the following main phases: data acquisition, pre-processing, quantization, aggregation, and quality control. The open-sourced library [*dggridR*](https://github.com/r-barnes/dggridR) was used to complete conversion between geographic locations and ISEA3H DGGS cell indices. The modeling process was developed using a hybrid of Python 3.8 and R 3.6.2 environments.
