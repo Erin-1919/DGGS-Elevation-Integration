@@ -41,11 +41,15 @@ registerDoParallel(cores=ncores)# Shows the number of Parallel Workers to be use
 coarse.df.split = split(coarse.df,sample(1:ncores, nrow(coarse.df), replace=T))
 rm (coarse.df)
 
+# record processing time -- start
 tic("generate temps: ")
+
+# parallel processing
 # foreach() and %dopar% must be on the same line
 output_df = foreach(df = coarse.df.split, .combine=rbind,.packages='dggridR') %dopar% {elev_stats(dggs_res,df)}
+
+# record processing time -- end
 toc()
 
 # save results
 write.csv(output_df,sprintf("Result/Level%d/Temp/vege_temp_%d.csv",dggs_res,fid),row.names = FALSE)
-
