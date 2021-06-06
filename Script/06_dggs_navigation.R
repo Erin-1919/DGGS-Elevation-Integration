@@ -20,7 +20,6 @@ elev_stats = function(resolution,dataframe) {
   v_lat = 37.6895
   v_lon = -51.6218
   azimuth = 360-72.6482
-  # construct two dggs on two levels
   dgg.coarse = dgconstruct(projection = "ISEA", aperture = 3, topology = "HEXAGON", res = resolution, 
                     precision = 7, azimuth_deg =  azimuth, pole_lat_deg = v_lat, pole_lon_deg = v_lon)
   dgg.fine = dgconstruct(projection = "ISEA", aperture = 3, topology = "HEXAGON", res = (resolution+1), 
@@ -42,10 +41,8 @@ registerDoParallel(cores=ncores)# Shows the number of Parallel Workers to be use
 coarse.df.split = split(coarse.df,sample(1:ncores, nrow(coarse.df), replace=T))
 rm (coarse.df)
 
-print (dggs_res)
 tic("generate temps: ")
-
-# be careful! foreach() and %dopar% must be on the same line!
+# foreach() and %dopar% must be on the same line
 output_df = foreach(df = coarse.df.split, .combine=rbind,.packages='dggridR') %dopar% {elev_stats(dggs_res,df)}
 toc()
 
