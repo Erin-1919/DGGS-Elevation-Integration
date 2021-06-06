@@ -29,10 +29,6 @@ indicator of data quality. This research can serve as a guide for future develop
 
 ## Libraries needed
 *Python*
- - geopandas
- - shapely
- - numpy
- - math
  - requests
  - zipfile
  - json
@@ -41,6 +37,10 @@ indicator of data quality. This research can serve as a guide for future develop
  - rasterio
  - gdal
  - pandas
+ - geopandas
+ - shapely
+ - numpy
+ - math
  - multiprocess
  - scipy
  - warnings
