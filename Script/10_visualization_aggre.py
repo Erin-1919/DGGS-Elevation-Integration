@@ -1,7 +1,13 @@
+###############################################
+#### Visualization of Aggregation Results ####
+###############################################
+
 import datashader as ds, matplotlib.pyplot as plt, pandas as pd
 import sys, gc, matplotlib
 from datashader.mpl_ext import dsshow
 
+# Run this on an HPC so set the backend as 'AGG'
+# AGG backend is for writing to file instead of rendering in a window
 matplotlib.use('AGG')
 dggs_res = int((sys.argv[1]))
 grid_num = int((sys.argv[2]))
