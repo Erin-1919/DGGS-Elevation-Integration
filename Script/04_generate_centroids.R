@@ -77,7 +77,6 @@ output_df = foreach(i=c(1:ncores), .combine=rbind,.packages='dggridR') %dopar% {
 output_df = output_df[!duplicated(output_df$Cell_address),]
 
 # record timing -- end
-print (dggs_res)
 toc()
 
 # save results
