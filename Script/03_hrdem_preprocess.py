@@ -36,24 +36,21 @@ for fp in dem_fps:
     src = rasterio.open(fp)
     src_files_to_mosaic.append(src)
 
+# if there is only one HRDEM tile then skip the mosaic process and rename the tiff
 if len(src_files_to_mosaic) == 1:
     src.close()
     os.rename('Data/HRDEM_1_4617.tif', 'Data/HRDEM_mosaic.tif')
 else:
     # Merge function returns a single mosaic array and the transformation info
     mosaic_dem, mosaic_trans = merge(src_files_to_mosaic, res=src.res, nodata=-32767.0, method='first')
-    
     # Copy the metadata
     mosaic_meta = src.meta.copy()
-    
     # Update the metadata
     mosaic_meta.update({"driver": "GTiff","height": mosaic_dem.shape[1],"width": mosaic_dem.shape[2], "compress":'lzw', 
                         "count":1,"dtype": 'float32',"nodata": -32767.0,"transform": mosaic_trans,"crs": "EPSG:4617"})
-    
     # Write the mosaic raster to disk
     with rasterio.open("Data/HRDEM_mosaic.tif", "w", **mosaic_meta) as dest:
         dest.write(mosaic_dem)
-    
     src.close()
     del mosaic_dem, mosaic_trans, mosaic_meta
     gc.collect()
@@ -84,7 +81,6 @@ hrdem_out_img, hrdem_out_transform = mask(dataset=hrdem, shapes=boundingbox_coor
 hrdem_out_meta = hrdem.meta.copy()
 hrdem_out_meta.update({'height': int(hrdem_out_img.shape[1]),'width': int(hrdem_out_img.shape[2]), 
                       "transform": hrdem_out_transform,"compress":'lzw'})
-
 hrdem.close()
 
 # output clipped rasters
