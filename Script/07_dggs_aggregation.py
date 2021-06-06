@@ -64,9 +64,7 @@ pool.close()
 pool.join()
 
 # record timing -- end
-print (dggs_res)
 print ("Processing time: %s seconds" % (time.time() - start_time))
 
 # save the csv
 output_csv_path = "Result/Level{}/Stats/vege_temp_{}.csv".format(dggs_res,fid)
-
