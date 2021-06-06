@@ -5,40 +5,34 @@
 ### set script argument -- bounding box coords of the area of interest
 import sys
 
+# currently only support a rectangular bounding box
 minx = float((sys.argv[1]))
 miny = float((sys.argv[2]))
 maxx = float((sys.argv[3]))
 maxy = float((sys.argv[4]))
-grid_num = int((sys.argv[4]))
-crs = (sys.argv[5])
+grid_num = int((sys.argv[4])) # number of fishnet grids to be created for parallel processing, should be a squared number, e.g., 100
+crs = (sys.argv[5]) # e.g., crs = 'utm17'
 
-# minx = -78.25
-# miny = 44.8
-# maxx = -78.35
-# maxy = 44.9
-# grid_num = 100
-# crs = 'utm17'
-
-### create shp for the bbox
+### create shp for the bounding box
 import geopandas as gpd
 from shapely.geometry import Polygon
 
-# lat lon coords of bbox in two lists
+# lat lon coords of the bounding box in two lists
 lat_point_list = [maxy,maxy,miny,miny,maxy]
 lon_point_list = [minx,maxx,maxx,minx,minx]
 
-# create shapely polygon
+# create a shapely polygon
 polygon_geom = Polygon(zip(lon_point_list, lat_point_list))
 polygon = gpd.GeoDataFrame(index=[0], geometry=[polygon_geom])       
 polygon = polygon.set_crs("EPSG:4617") # NAD83 CSRS
 print(polygon.geometry)
 
-# output polygon as an Esri shapefile
+# output the polygon as an Esri shapefile
 polygon.to_file(filename='Data/study_area.shp', driver="ESRI Shapefile")
 
 print ("Study area shp is created successfully!")
 
-### create fishnet grid for future usage
+### create a fishnet grid for future usage -- parallel processing
 import geopandas as gpd
 import numpy as np
 from shapely.geometry import Polygon
@@ -88,7 +82,7 @@ with zipfile.ZipFile(zip_pf,"r") as zip_ref:
 
 print ("Projects Footprints are downloaded successfully!")
 
-## clean up the project footprint shp a bit
+## clean up the project footprint shp
 # read data
 Projects_Footprints = gpd.GeoDataFrame.from_file('Data/Projects_Footprints.shp')
 Study_Area = gpd.GeoDataFrame.from_file('Data/study_area.shp')
@@ -107,6 +101,10 @@ Projects_Footprints_dissolved.to_file(filename='Data/Projects_Footprints_dissolv
 print ("Projects Footprints are prepared!")
 
 ## download CDEM
+# this can be done manually via the Geospatial-Data Extraction tool in Canada's Open Government Portal
+# https://maps.canada.ca/czs/index-en.html
+# or it can be obtained through the STAC API
+
 # STAC API search endpoint
 stac_cdem = "https://datacube.services.geo.ca/api/search?collections=cdem&bbox={},{},{},{}".format(minx,miny,maxx,maxy)
 
