@@ -18,7 +18,7 @@ TODO
 ### Code Repository
 https://github.com/Erin-1919/DGGS-Elevation-Integration
 
-This work aimed to integrate multi-source terrain data in Canada by adopting the ISEA3H DGGS. The modeling process of terrain data in the ISEA3H DGGS had the following main phases: data acquisition, pre-processing, quantization, aggregation, and quality control. The open-sourced library [*dggridR*](https://github.com/r-barnes/dggridR) was used to complete conversion between geographic locations and ISEA3H DGGS cell indices. The modeling process was developed using a hybrid of Python 3.8 and R 3.6.2 environments.
+This work aimed to integrate multi-source terrain data in Canada by adopting the ISEA3H DGGS. The modeling process of terrain data in the ISEA3H DGGS had the following main phases: data acquisition, pre-processing, quantization, aggregation, and quality control. The open-sourced library [*dggridR*](https://github.com/r-barnes/dggridR) was used to complete conversion between geographic locations and ISEA3H DGGS cell indices. The modeling process was developed using a hybrid of Python 3.8 and R 3.6.2 environments. The code used to conduct the experiment are are available in the folder [*Script*](https://github.com/Erin-1919/DGGS-Elevation-Integration/tree/main/Script).
 
 ## Abstract
 The Canadian Digital Elevation Model (CDEM) and the High Resolution Digital Elevation Model (HRDEM) released by Natural Resources Canada are primary terrain data sources
