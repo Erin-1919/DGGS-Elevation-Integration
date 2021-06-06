@@ -1,8 +1,12 @@
+###############################################
+#### Visualization of Quantization results ####
+###############################################
+
 import datashader as ds, matplotlib.pyplot as plt, pandas as pd
 import sys, numpy, gc, matplotlib
 from datashader.mpl_ext import dsshow
 
-# Run this on a HPC so set the backend as 'AGG'
+# Run this on an HPC so set the backend as 'AGG'
 # AGG backend is for writing to file instead of rendering in a window
 matplotlib.use('AGG')
 dggs_res = int((sys.argv[1]))
