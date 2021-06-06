@@ -1,6 +1,3 @@
-import os
-os.chdir('/home/mingke.li/expOct_vege/')
-
 ###########################################################
 #### DGGS modeling -- extract values with interpolation ###
 ###########################################################
@@ -12,6 +9,7 @@ import numpy
 import pyRserve
 import shapely
 from scipy import interpolate
+import os
 import warnings
 import time
 
@@ -165,7 +163,7 @@ def dggs_elevation_hrdem(lon,lat,resolution,interp = 'linear'):
         return numpy.nan
 
 # read control points dataset
-control_points = pandas.read_csv('Experiment_data/vege_checked.csv', sep=',')
+control_points = pandas.read_csv('Experiment_data/vege_gcp.csv', sep=',')
 
 # test if the control point falls in HRDEM extent and store in a field
 control_points['fall_in_test'] = [fall_in(lon,lat) for lon, lat in zip(control_points.lon, control_points.lat)]
