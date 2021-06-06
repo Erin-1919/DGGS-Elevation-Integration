@@ -1,31 +1,34 @@
-# Source Code: Integration of Heterogeneous Terrain Data into Discrete Global Grid Systems
+# Integration of Heterogeneous Terrain Data into Discrete Global Grid Systems -- Source Code
 
+This work aimed to integrate multi-source terrain data in Canada by adopting the ISEA3H DGGS. The modeling process of terrain data in the ISEA3H DGGS had the following main phases: data acquisition, pre-processing, quantization, aggregation, and quality control. The open-sourced library [*dggridR*](https://github.com/r-barnes/dggridR) was used to complete conversion between geographic locations and ISEA3H DGGS cell indices. The modeling process was developed using a hybrid of Python 3.8 and R 3.6.2 environments. The code used to conduct the experiment are available in the folder [*Script*](https://github.com/Erin-1919/DGGS-Elevation-Integration/tree/main/Script).
+
+## Manuscript Information
 ### Title of Manuscript
 Integration of Heterogeneous Terrain Data into Discrete Global Grid Systems
-
-### Authors
-Mingke Li, Emmanuel Stefanakisa, and Heather McGrath
 
 ### Keywords
 Discrete Global Grid Systems, terrain data, data integration, national elevation service, multi-resolution elevation, parallel computing
 
-### Corresponding Author
-Mingke Li (mingke.li@ucalgary.ca)
-
 ### DOI
-TODO
+#TODO
 
-### Code Repository
-https://github.com/Erin-1919/DGGS-Elevation-Integration
+### Authors
+Mingke Li, Emmanuel Stefanakisa, and Heather McGrath
 
-This work aimed to integrate multi-source terrain data in Canada by adopting the ISEA3H DGGS. The modeling process of terrain data in the ISEA3H DGGS had the following main phases: data acquisition, pre-processing, quantization, aggregation, and quality control. The open-sourced library [*dggridR*](https://github.com/r-barnes/dggridR) was used to complete conversion between geographic locations and ISEA3H DGGS cell indices. The modeling process was developed using a hybrid of Python 3.8 and R 3.6.2 environments. The code used to conduct the experiment are available in the folder [*Script*](https://github.com/Erin-1919/DGGS-Elevation-Integration/tree/main/Script).
+### Corresponding Author
+[Mingke Li](https://erin-1919.github.io/) (mingke.li@ucalgary.ca)
 
-## Abstract
+[ORCID](https://orcid.org/0000-0001-6310-4964)
+
+### Abstract
 The Canadian Digital Elevation Model (CDEM) and the High Resolution Digital Elevation Model (HRDEM) released by Natural Resources Canada are primary terrain data sources
 in Canada. Due to their different coverage, datums, resolutions, and accuracies, a standardized framework for national elevation data across various scales is required. This
 study provides new insights into the adoption of Discrete Global Grid Systems (DGGS) to facilitate the integration of multi-source terrain data at various granularities. In particular, the Icosahedral Snyder Equal Area Aperture 3 Hexagonal Grid (ISEA3H) was employed, and quantization, integration, and aggregation were conducted on this framework. To demonstrate the modeling process, an experiment was undertaken for two areas in Ontario, taking advantage of parallel computing which was beneficial from the discreteness of
 DGGS cells. The accuracy of the modeled elevations was estimated by referring to the ground-surveyed values and was included in the spatially referenced metadata as an
 indicator of data quality. This research can serve as a guide for future development of a national elevation service, providing consistent, multi-resolution elevations and avoiding complex, duplicated pre-processing at the user's end. Future investigation into an operational integration platform to support real-world decision-making, as well as the DGGS-powered geospatial datacube, is recommended.
+
+### Code Repository
+https://github.com/Erin-1919/DGGS-Elevation-Integration
 
 ## Libraries needed
 *Python*
