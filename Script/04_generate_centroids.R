@@ -28,7 +28,10 @@ look_up = data.frame("res_list" = res_list,"cell_size_list" = cell_size_list,"ve
 dggs_cellsize = look_up$cell_size_list[look_up$res_list == dggs_res]
 vertical_res = look_up$vertical_res_list[look_up$res_list == dggs_res]
 
-# define DGGS
+# define DGGS with the orientation that center Canada's border in one single face of the icosahedron
+# reference -- Zhou, J., Ben, J., Wang, R., Zheng, M., Yao, X., & Du, L. (2020). 
+# A novel method of determining the optimal polyhedral orientation for discrete global grid systems applicable to regional-scale areas of interest. 
+# International Journal of Digital Earth, 13(12), 1553-1569.
 v_lat = 37.6895
 v_lon = -51.6218
 azimuth = 360-72.6482
@@ -52,7 +55,7 @@ nested_grids = function(sqnum) {
   return (reg_grid)
 }
 
-# define a function to find cell centroids position within a rectangle searching area
+# define a function to find cell centroids position within a rectangular searching area
 find_centroid = function(i,cellsize) {
   centroids = sp::makegrid(rectangles[i], cellsize = cellsize)
   centroids$Cell_address = dgGEO_to_SEQNUM(DGG,centroids$x1, centroids$x2)$seqnum
