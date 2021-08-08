@@ -13,7 +13,7 @@ Discrete Global Grid Systems, terrain data, data integration, national elevation
 10.1080/15230406.2021.1966648
 
 ### Authors
-Mingke Li, Heather McGrath, and Emmanuel Stefanakisa
+Mingke Li, Heather McGrath, and Emmanuel Stefanakis
 
 ### Corresponding Author
 [Mingke Li](https://erin-1919.github.io/) (mingke.li@ucalgary.ca)
