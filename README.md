@@ -10,10 +10,10 @@ Integration of Heterogeneous Terrain Data into Discrete Global Grid Systems
 Discrete Global Grid Systems, terrain data, data integration, national elevation service, multi-resolution elevation, parallel computing
 
 ### DOI
-#TODO
+10.1080/15230406.2021.1966648
 
 ### Authors
-Mingke Li, Emmanuel Stefanakisa, and Heather McGrath
+Mingke Li, Heather McGrath, and Emmanuel Stefanakisa
 
 ### Corresponding Author
 [Mingke Li](https://erin-1919.github.io/) (mingke.li@ucalgary.ca)
