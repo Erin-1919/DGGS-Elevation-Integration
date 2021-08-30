@@ -11,7 +11,7 @@ library(tictoc)
 
 # read arguments, resolution level and grid ID
 sys.argv = commandArgs(trailingOnly = TRUE)
-dggs_res = as.numeric((sys.argv[1]))
+dggs_res = as.numeric(sys.argv[1])
 fid = as.numeric(Sys.getenv("SLURM_ARRAY_TASK_ID"))
 
 # get number of cores, register at the backend
