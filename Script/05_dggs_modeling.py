@@ -14,7 +14,7 @@ shapely.speedups.enable()
 warnings.simplefilter('error', RuntimeWarning) 
 
 ## set script argument -- resolution level and grid number
-dggs_res = int((sys.argv[1])) 
+dggs_res = int(sys.argv[1])
 fid = int(os.environ.get("SLURM_ARRAY_TASK_ID"))
 
 ## construct a look-up table, storing resolution and corresponding cell size and vertical resolution
