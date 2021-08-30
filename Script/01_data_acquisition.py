@@ -6,12 +6,12 @@
 import sys
 
 # currently only support a rectangular bounding box
-minx = float((sys.argv[1]))
-miny = float((sys.argv[2]))
-maxx = float((sys.argv[3]))
-maxy = float((sys.argv[4]))
-grid_num = int((sys.argv[4])) # number of fishnet grids to be created for parallel processing, should be a squared number, e.g., 100
-crs = (sys.argv[5]) # e.g., crs = 'utm17'
+minx = float(sys.argv[1])
+miny = float(sys.argv[2])
+maxx = float(sys.argv[3])
+maxy = float(sys.argv[4])
+grid_num = int(sys.argv[4]) # number of fishnet grids to be created for parallel processing, should be a squared number, e.g., 100
+crs = sys.argv[5] # e.g., crs = 'utm17'
 
 ### create shp for the bounding box
 import geopandas as gpd
