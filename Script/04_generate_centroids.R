@@ -20,7 +20,7 @@ registerDoParallel(cores=ncores)# Shows the number of Parallel Workers to be use
 
 # construct a look-up table, storing resolution and corresponding cell size and vertical resolution
 res_list = c(16,17,18,19,20,21,22,23,24,25,26,27,28,29)
-cell_size_list = c(0.005,0.003,0.001,0.0009,0.0008,0.0006,0.0003,0.0002,0.0001,0.00006,0.00003,0.00002,0.00001,0.000005)
+cell_size_list = c(0.005,0.003,0.001,0.0009,0.0008,0.0003,0.0003,0.0001,0.0001,0.00006,0.00003,0.00002,0.00001,0.000005)
 vertical_res_list = c(0,0,0,1,1,2,2,3,3,4,4,5,5,6)
 look_up = data.frame("res_list" = res_list,"cell_size_list" = cell_size_list,"vertical_res_list" = vertical_res_list)
 
